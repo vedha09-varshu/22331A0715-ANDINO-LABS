@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Activity Room</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Student Activity Room</h1>
+    <nav>
+      <a href="#hackathons">Hackathons</a>
+      <a href="#ideathons">Ideathons</a>
+      <a href="#placements">Placement Corner</a>
+    </nav>
+  </header>
+
+  <section id="hackathons" class="activity-section">
+    <h2>Hackathon Experiences</h2>
+    <div class="posts-container">
+    <article class="post">
+        <h3>Team CSIT Wins CodeStorm</h3>
+        <p>We built an app that helps local vendors manage inventory—fun and challenging!</p>
+       
+      </article>
+    </div>
+  </section>
+
+  <section id="ideathons" class="activity-section">
+    <h2>Ideathon Innovations</h2>
+    <div class="posts-container">
+      <article class="post">
+      <h3>"I have partcipated in CISCO ideathon.!!" </h3>
+      <P>I have recently participated in ideathon where in we were asked to present our ideas that could solve different real life problems.
+        I presented on APSRTC website such that it could enlist the timing of upcoming buses . i had great experience there. Everyone should try it.
+      </P>
+      </article>
+    </div>
+  </section>
+
+  <section id="placements" class="activity-section">
+    <h2>Placement Corner</h2>
+    <div class="posts-container">
+      <article class="post">
+        <h3>AFFORDMED TECHOLOGIES</h3>
+        <P> hi GUYS!! AFFORMED TECHONOLOGIES has conducted a placement drive in our college and guess what it took us 1.5 hours to enter the exam portal.
+          PRO TIP: use postman app and enter json code to enter the exam portal.
+           THANK ME LATER!! </P>
+      </article>
+      
+    </div>
+  </section>
+ 
+  <section id="add-post-section" style="margin: 2em 0; padding: 1em; border-top: 2px solid #ccc;">
+    <h2>Add a New Post</h2>
+    <form id="add-post-form">
+      <label for="section">Section:</label>
+      <select id="section" name="section">
+        <option value="hackathons">Hackathons</option>
+        <option value="ideathons">Ideathons</option>
+        <option value="placements">Placement Corner</option>
+      </select><br><br>
+      <label for="title">Title:</label>
+      <input type="text" id="title" name="title" required><br><br>
+      <label for="content">Content:</label><br>
+      <textarea id="content" name="content" rows="4" cols="50" required></textarea><br><br>
+      <button type="submit">Add Post</button>
+    </form>
+  </section>
+
+
+  <footer>
+    <p>FROM THE , BY THE , TO THE STUDENTS</p>
+  
+  </footer>
+
+
+
+  <script>
+    document.getElementById('add-post-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const section = document.getElementById('section').value;
+      const title = document.getElementById('title').value;
+      const content = document.getElementById('content').value;
+      const postContainer = document.querySelector(`#${section} .posts-container`);
+      if (postContainer) {
+        const article = document.createElement('article');
+        article.className = 'post';
+        const h3 = document.createElement('h3');
+        h3.textContent = title;
+        const p = document.createElement('p');
+        p.textContent = content;
+        article.appendChild(h3);
+        article.appendChild(p);
+        postContainer.appendChild(article);
+        document.getElementById('add-post-form').reset();
+      }
+    });
+  </script>
